@@ -1,0 +1,168 @@
+
+/* Vomnibar Sky Blue CSS */
+
+#vomnibar ol, #vomnibar ul {
+  list-style: none;
+  display: none;
+}
+
+#vomnibar {
+  display: block;
+  position: fixed;
+  width: calc(100% - 20px); /* adjusted to keep border radius and box-shadow visible*/
+  /*min-width: 400px;
+  top: 70px;
+  left: 50%;*/
+  top: 8px;
+  left: 8px;
+  /*margin: 0 0 0 -40%;*/
+  font-family: sans-serif;
+
+  background-color: #151515;
+  text-align: left;
+  border-radius: 4px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.8);
+  border: 1px solid #000000;
+  z-index: 2139999999; /* One less than hint markers and the help dialog (see ../content_scripts/vimium.css). */
+  /* transparent */
+  opacity: 0.93;
+}
+
+#vomnibar input {
+  color: deepskyblue;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  height: 34px;
+  margin-bottom: 0;
+  padding: 4px;
+  background-color: #101010;
+  border: none;
+  border-bottom: 3px solid #33bfffAA;
+  width: 100%;
+  outline: none;
+  box-sizing: border-box;
+
+  height: 50px;
+  padding: 5px 0px 0px 20px;
+  font-weight: bold;
+}
+
+#vomnibar .vomnibarSearchArea {
+  display: block;
+  padding: 0px;
+  margin: 0px;
+  background-color: #000000;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid #4d4d4d;
+}
+
+#vomnibar ul {
+  background-color: #161616;
+  border-radius: 0 0 4px 4px;
+  list-style: none;
+  padding: 10px 0px 0px 0px;
+  margin: 10px 0px 0px 0px;
+}
+
+#vomnibar li {
+  border: none;
+  line-height: 1.1em;
+  padding: 7px 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  color: black;
+  position: relative;
+  display: list-item;
+  margin: auto;
+  background-color: #161616;
+}
+
+#vomnibar li:last-of-type {
+  border-bottom: none;
+}
+
+#vomnibar li .vomnibarTopHalf, #vomnibar li .vomnibarBottomHalf {
+  display: block;
+  overflow: hidden;
+}
+
+#vomnibar li .vomnibarBottomHalf {
+  font-size: 15px;
+  margin-top: 3px;
+  padding: 2px 0;
+}
+
+#vomnibar li .vomnibarIcon {
+  padding: 0 13px 0 6px;
+  vertical-align: bottom;
+}
+
+#vomnibar li .vomnibarSource {
+  color: #0482ad;
+  padding: 1px 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  background-color: #003343;
+  font-size: 14px;
+}
+#vomnibar li .vomnibarRelevancy {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  font-family: monospace;
+  width: 100px;
+  overflow: hidden;
+}
+
+#vomnibar li .vomnibarUrl {
+  white-space: nowrap;
+  color: #e1e4ed7a;
+  font-size: 12px;
+}
+
+#vomnibar li .vomnibarMatch {
+/*  font-weight: bold;*/
+  color: orange;
+}
+
+#vomnibar li em, #vomnibar li .vomnibarTitle {
+  margin-left: 4px;
+  font-weight: normal;
+  color: #128db5;
+  font-size: 16px;
+}
+#vomnibar li em { font-style: italic; }
+#vomnibar li em .vomnibarMatch, #vomnibar li .vomnibarTitle .vomnibarMatch {
+  color: #FF0000CC;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#vomnibar li.vomnibarSelected {
+  background-color: #002836;
+  font-weight: normal;
+}
+
+#vomnibarInput::selection {
+  /* This is the light grey color of the vomnibar border. */
+  /* background-color: #F1F1F1; */
+
+  /* This is the light blue color of the vomnibar selected item. */
+  /* background-color: #BBCEE9; */
+
+  /* This is a considerably lighter blue than Vimium blue, which seems softer
+   * on the eye for this purpose. */
+/*  background-color: #E6EEFB;*/
+  color: #101010;
+  background-color: deepskyblue;
+}
+
+.vomnibarInsertText {
+}
+
+.vomnibarNoInsertText {
+  visibility: hidden;
+}
