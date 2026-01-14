@@ -280,7 +280,7 @@ class VomnibarUI {
         this.selection = Math.min(this.completions.length - 1, Math.max(this.initialSelectionValue, this.selection));
         this.updateSelection();
         if (callback)
-          return callack();
+          return callback();
       }
     });
   }

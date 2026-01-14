@@ -91,7 +91,7 @@ context("synced settings",
   })
 );
 
-context("default valuess",
+context("default values",
   should("have a default value for every option", () => {
     for (let key of Object.keys(Options)) {
       assert.isTrue(key in Settings.defaults);

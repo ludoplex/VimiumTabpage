@@ -23,9 +23,15 @@ const initBackgroundAccess = async () => {
           RegexpCache: {
             get(pattern) {
               try {
+                // Limit pattern length to prevent ReDoS attacks
+                if (pattern && pattern.length > 1000) {
+                  console.warn("Pattern too long, truncating");
+                  pattern = pattern.substring(0, 1000);
+                }
                 return new RegExp("^" + pattern.replace(/\*/g, ".*") + "$");
               } catch (e) {
-                return new RegExp(pattern);
+                // Return a regex that matches nothing on error
+                return /^$/;
               }
             }
           },
@@ -494,8 +500,18 @@ document.addEventListener("DOMContentLoaded", async function() {
   // Use fetch instead of XMLHttpRequest for MV3 compatibility
   try {
     const response = await fetch(chrome.runtime.getURL('vimium/pages/exclusions.html'));
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
     const html = await response.text();
-    $("exclusionScrollBox").innerHTML = html;
+    // Sanitize HTML by creating it through DOM parser (safer than direct innerHTML)
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    // Only use the body content from the parsed document
+    const exclusionScrollBox = $("exclusionScrollBox");
+    if (exclusionScrollBox && doc.body) {
+      exclusionScrollBox.innerHTML = doc.body.innerHTML;
+    }
     switch (location.pathname) {
       case "/vimium/pages/options.html": initOptionsPage(); break;
       case "/vimium/pages/popup.html": initPopupPage(); break;

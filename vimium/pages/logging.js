@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (branchRefParts.length === 2)
         $("branchRef").innerText = branchRefParts[1];
       else
-        $("branchRef").innerText = `HEAD detatched at ${branchRefParts[0]}`;
+        $("branchRef").innerText = `HEAD detached at ${branchRefParts[0]}`;
       $("branchRef-wrapper").classList.add("no-hide");
     })
     .catch(error => {
