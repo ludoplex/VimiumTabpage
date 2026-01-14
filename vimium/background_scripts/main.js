@@ -126,7 +126,12 @@ chrome.webNavigation.onReferenceFragmentUpdated.addListener(onURLChange); // Has
 // Cache "vimium/content_scripts/vimium.css" in chrome.storage.local for UI components.
 // In MV3, use fetch instead of XMLHttpRequest for service worker compatibility
 (function() {
-  fetch(chrome.runtime.getURL("vimium/content_scripts/vimium.css"))
+  const cssUrl = chrome.runtime.getURL("vimium/content_scripts/vimium.css");
+  if (!cssUrl) {
+    console.log("Warning: chrome.runtime.getURL not available (this is expected in tests)");
+    return;
+  }
+  fetch(cssUrl)
     .then(response => {
       if (response.ok) {
         return response.text();
